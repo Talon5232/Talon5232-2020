@@ -5,40 +5,43 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.Auto;
+package frc.robot.commands.Auto.IntakeAuto;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.IntakeRotSub;
 
-public class DriveDistance extends CommandBase {
-  private final DriveSubsystem m_drive;
-  private final double m_time;
-  private final double m_speed;
-
+public class IntakeRotAuto extends CommandBase {
+  private final IntakeRotSub m_Rotate;
+  double m_speed;
   /**
-   * Creates a new DriveDistance.
-   *
-   * @param inches The number of inches the robot will drive
-   * @param speed The speed at which the robot will drive
-   * @param drive The drive subsystem on which this command will run
+   * Creates a new IntakeRotAuto.
    */
-  public DriveDistance(double time, double speed, DriveSubsystem drive) {
-    m_time = time;
+  public IntakeRotAuto(IntakeRotSub subsystem, double speed) {
+    m_Rotate = subsystem;
     m_speed = speed;
-    m_drive = drive;
+
+    addRequirements(m_Rotate);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
+  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_drive.arcadeDrive(m_speed, 0);
-   
   }
 
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
+    m_Rotate.setRotSpeed(m_speed);
+  }
+
+
+  // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_drive.arcadeDrive(0, 0);
   }
 
+  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;

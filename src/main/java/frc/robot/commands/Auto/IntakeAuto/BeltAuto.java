@@ -5,25 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.Auto.SimpleComputer;
+package frc.robot.commands.Auto.IntakeAuto;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.Belt;
 
-public class SimpleComputerWait extends CommandBase {
-  private final DriveSubsystem m_drive;
-  double m_fwd, m_rot;
+public class BeltAuto extends CommandBase {
+  private final Belt m_Belt;
+  double m_speed;
+
   /**
-   * Creates a new SimpleComputerWait.
+   * Creates a new BeltOutAuto.
    */
-  public SimpleComputerWait(DriveSubsystem subsystem, double fwd, double rot) {
-    m_drive = subsystem;
-    m_fwd = 0;
-    m_rot = rot;
-    addRequirements(m_drive);
-  
+  public BeltAuto(Belt subsystem, double speed) {
+    m_Belt = subsystem;
+    m_speed = speed;
 
+    addRequirements(m_Belt);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -35,8 +33,7 @@ public class SimpleComputerWait extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drive.arcadeDrive(m_fwd, m_rot);
-    withTimeout(1);
+    m_Belt.BeltAuto(m_speed);
   }
 
   // Called once the command ends or is interrupted.

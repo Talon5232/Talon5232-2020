@@ -42,7 +42,7 @@ public class IntakeRotSub extends SubsystemBase {
   public void RotIdle() {
     m_Rotate.set(ControlMode.PercentOutput, 0);
 }
-  public void setRotSpeed(double rotSpeed){
-m_Rotate.set(rotSpeed);    
+  public void setRotSpeed(double speed){
+m_Rotate.set(speed);    
   }
 }

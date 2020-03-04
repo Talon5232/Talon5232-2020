@@ -1,18 +1,20 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.POVButton;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Constants.AutoConstants;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
-
+import frc.robot.commands.Auto.BasicAuto;
+import frc.robot.commands.Climbing.ElevatorDown;
+import frc.robot.commands.Climbing.ElevatorUp;
+import frc.robot.commands.Climbing.WinchDown;
+import frc.robot.commands.Climbing.WinchUp;
 import frc.robot.commands.DriveTrain.DefaultDrive;
 import frc.robot.commands.Intake.BeltOneWay;
 import frc.robot.commands.Intake.BeltOtherWay;
@@ -28,25 +30,16 @@ import frc.robot.commands.WheelOfFortune.WheelRotDown;
 import frc.robot.commands.WheelOfFortune.WheelRotUp;
 import frc.robot.commands.WheelOfFortune.WoFS;
 import frc.robot.commands.WheelOfFortune.WoFS2;
-import frc.robot.commands.Auto.BasicAuto;
-import frc.robot.commands.Auto.DriveDistance;
-import frc.robot.commands.Climbing.ElevatorDown;
-import frc.robot.commands.Climbing.ElevatorUp;
-import frc.robot.commands.Climbing.WinchDown;
-import frc.robot.commands.Climbing.WinchUp;
 import frc.robot.subsystems.Belt;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ElevatorLatch;
 import frc.robot.subsystems.ElevatorSub;
-
 import frc.robot.subsystems.IntakeRotSub;
 import frc.robot.subsystems.IntakeSub;
 import frc.robot.subsystems.IntakeSwitch;
 import frc.robot.subsystems.WheelRot;
 import frc.robot.subsystems.Winch;
 import frc.robot.subsystems.WoFSSub;
-
-import edu.wpi.first.wpilibj2.command.Command;
 
 
 
@@ -71,7 +64,7 @@ public class RobotContainer {
   private final WoFSSub m_WoFS = new WoFSSub();
 
   private final Command m_FWDBack = new
-  BasicAuto(m_robotDrive);
+  BasicAuto(m_robotDrive, m_Belt, m_IntakeSub, m_Rotate);
 
 
   // The autonomous routines
@@ -145,8 +138,7 @@ public class RobotContainer {
     final JoystickButton k14 = new JoystickButton(m_buttons, 14);
     final JoystickButton k15 = new JoystickButton(m_buttons, 15);
     final JoystickButton k16 = new JoystickButton(m_buttons, 16);
-    final POVButton k180 = new POVButton(m_buttons, 180);
-    final POVButton k0 = new POVButton(m_buttons, 0);
+
 
     final JoystickButton b1 = new JoystickButton(m_blueButtons, 1);
     final JoystickButton b2 = new JoystickButton(m_blueButtons, 2);

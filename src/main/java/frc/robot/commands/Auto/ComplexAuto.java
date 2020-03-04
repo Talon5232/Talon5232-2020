@@ -7,39 +7,17 @@
 
 package frc.robot.commands.Auto;
 
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.Constants.AutoConstants;
-import frc.robot.Constants.DriveConstants;
-import frc.robot.commands.Intake.BeltOneWay;
-import frc.robot.commands.Intake.Shoot;
-import frc.robot.subsystems.Belt;
-import frc.robot.subsystems.DriveSubsystem;
-
-import frc.robot.subsystems.IntakeSub;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class ComplexAuto extends SequentialCommandGroup {
-  
-  private double startTime;
-  
+public class ComplexAuto extends ParallelCommandGroup {
   /**
    * Creates a new ComplexAuto.
-   *
-   * @param drive The drive subsystem this command will run on
-   * @param hatch The hatch subsystem this command will run on
    */
-  public ComplexAuto(DriveSubsystem drive, IntakeSub shoot, Belt belt) {
-    addCommands(
-        // Drive forward the specified distance
-        new DriveDistance(DriveConstants.kRightMotor3Port, DriveConstants.kRightMotor2Port, drive ),
-        new BeltOneWay(belt), 
-        // Release the hatch
-        new Shoot(shoot),
-
-        // Drive backward the specified distance
-        new DriveDistance(DriveConstants.kRightMotor3Port, DriveConstants.kRightMotor2Port, drive ));
+  public ComplexAuto() {
+    // Add your commands in the super() call, e.g.
+    // super(new FooCommand(), new BarCommand());super();
   }
-
 }

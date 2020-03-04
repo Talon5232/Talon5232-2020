@@ -41,5 +41,7 @@ public void SetMotor(){
   public void IntakeIdle(){
     m_Intake.set(ControlMode.PercentOutput, 0);
   }
- 
+ public void IntakeAuto(double speed){
+   m_Intake.set(ControlMode.PercentOutput, speed);
+ }
 }

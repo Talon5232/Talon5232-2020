@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSubsystem;
 
-public class SimpleComputerFWD extends CommandBase {
+public class DrivetrainAuto extends CommandBase {
   private final DriveSubsystem m_drive;
   double m_fwd, m_rot;
 
   /**
    * Creates a new SimpleComputerWait.
    */
-  public SimpleComputerFWD(DriveSubsystem subsystem, double fwd, double rot) {
+  public DrivetrainAuto(DriveSubsystem subsystem, double fwd, double rot) {
     m_drive = subsystem;
     m_fwd = fwd;
     m_rot = rot;

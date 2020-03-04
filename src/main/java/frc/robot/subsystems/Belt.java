@@ -44,4 +44,7 @@ public void SetMotor(){
   public void BeltIdle(){
     m_Belt.set(ControlMode.PercentOutput, 0);
   }
+  public void BeltAuto(double speed){
+    m_Belt.set(ControlMode.PercentOutput, speed);
+  }
 }

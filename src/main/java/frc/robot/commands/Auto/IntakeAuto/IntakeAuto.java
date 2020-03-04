@@ -5,26 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.Auto.SimpleComputer;
+package frc.robot.commands.Auto.IntakeAuto;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.IntakeSub;
 
-public class SimpleComputerRight extends CommandBase {
-  private final DriveSubsystem m_drive;
-  double m_fwd, m_rot;
-
+public class IntakeAuto extends CommandBase {
+  private final IntakeSub m_Intake;
+  double m_speed;
   /**
-   * Creates a new SimpleComputerWait.
+   * Creates a new IntakeAuto.
    */
-  public SimpleComputerRight(DriveSubsystem subsystem, double fwd, double rot) {
-    m_drive = subsystem;
-    m_fwd = .5;
-    m_rot = 1;
-    addRequirements(m_drive);
-  
+  public IntakeAuto(IntakeSub subsystem, double speed) {
+    m_Intake = subsystem;
+    m_speed = speed;
 
+    addRequirements(m_Intake);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -36,7 +32,7 @@ public class SimpleComputerRight extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drive.arcadeDrive(m_fwd, m_rot);
+    m_Intake.IntakeAuto(m_speed);
   }
 
   // Called once the command ends or is interrupted.
