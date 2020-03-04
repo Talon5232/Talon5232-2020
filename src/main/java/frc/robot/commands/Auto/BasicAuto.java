@@ -33,7 +33,7 @@ public class BasicAuto extends SequentialCommandGroup {
       new IntakeRotAuto(m_Rotate, .25).withTimeout(.15),
       new WaitCommand(.5),
     new ParallelCommandGroup(
-      new BeltAuto(m_Belt, 1).withTimeout(2),
+      new BeltAuto(m_Belt, 1).withTimeout(3),
       new IntakeAuto(m_Intake, 1).withTimeout(3)
       ));
     new SequentialCommandGroup(
