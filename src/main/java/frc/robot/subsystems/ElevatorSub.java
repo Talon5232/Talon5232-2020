@@ -42,4 +42,7 @@ public void ElevatorDown(){
 public void ElevatorIdle(){
   m_Elevator.set(ControlMode.PercentOutput, 0);
 }
+public void ElevatorAuto(double speed){
+  m_Elevator.set(ControlMode.PercentOutput, speed);
+}
 }

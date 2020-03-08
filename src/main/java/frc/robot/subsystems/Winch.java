@@ -43,5 +43,7 @@ public void WinchDown(){
 public void WinchIdle(){
   m_Winch.set(ControlMode.PercentOutput, 0);
 }
-
+public void WinchAuto(double speed){
+  m_Winch.set(ControlMode.PercentOutput, speed);
+}
 }

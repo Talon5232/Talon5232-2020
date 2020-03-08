@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.Auto.BasicAuto;
+import frc.robot.commands.Auto.SuperBasicAuto;
+import frc.robot.commands.Auto.ClimbingAuto.ClimbingSequential;
 import frc.robot.commands.Climbing.ElevatorDown;
 import frc.robot.commands.Climbing.ElevatorUp;
 import frc.robot.commands.Climbing.WinchDown;
@@ -41,7 +43,7 @@ import frc.robot.subsystems.WheelRot;
 import frc.robot.subsystems.Winch;
 import frc.robot.subsystems.WoFSSub;
 
-
+import frc.robot.commands.DriveTrain.HalveDriveSpeed;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -66,6 +68,8 @@ public class RobotContainer {
   private final Command m_FWDBack = new
   BasicAuto(m_robotDrive, m_Belt, m_IntakeSub, m_Rotate);
 
+
+  private final Command m_Basic = new SuperBasicAuto(m_robotDrive);
 
   // The autonomous routines
 
@@ -107,7 +111,8 @@ public class RobotContainer {
             () -> m_driverController.getZ()));
 
     // Add commands to the autonomous command chooser
-    m_chooser.setDefaultOption("Simple Auto", m_FWDBack);
+    m_chooser.setDefaultOption("Shooter", m_FWDBack);
+    m_chooser.addOption("BasicFWDBack", m_Basic);
    // m_chooser.addOption("Complex Auto", m_complexAuto);
 
     // Put the chooser on the dashboard
@@ -122,7 +127,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-  //  final JoystickButton k1 = new JoystickButton(m_buttons, 1);
+    final JoystickButton k1 = new JoystickButton(m_buttons, 1);
   //  final JoystickButton k2 = new JoystickButton(m_buttons, 2);
     final JoystickButton k3 = new JoystickButton(m_buttons, 3);
     final JoystickButton k4 = new JoystickButton(m_buttons, 4);
@@ -193,13 +198,13 @@ public class RobotContainer {
     k15.whileHeld(new WinchDown(m_Winch));
 
     //Drivetrain Commands
-
+    k1.whileHeld(new HalveDriveSpeed(m_robotDrive));
 
     //Relay Commands
 
 
     //Auto Programs
-
+    k16.whenPressed(new ClimbingSequential(m_Elevator));
   }
 
 

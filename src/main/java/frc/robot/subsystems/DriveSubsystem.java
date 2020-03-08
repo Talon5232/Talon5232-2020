@@ -16,6 +16,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.MotorSafety;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -56,7 +57,7 @@ public class DriveSubsystem extends SubsystemBase {
     
 
    //Setting default values on Motor Controllers - Limiting Amperage too (Only Talons, Victors not capable). 
-    SupplyCurrentLimitConfiguration cLc = new SupplyCurrentLimitConfiguration(true, 35, 40, .1);
+    SupplyCurrentLimitConfiguration cLc = new SupplyCurrentLimitConfiguration(true, 30, 35, .1);
     
     
     m_RightMotor1.configFactoryDefault(10);
@@ -97,17 +98,7 @@ public class DriveSubsystem extends SubsystemBase {
     m_LeftMotor3.enableVoltageCompensation(true);
    
   }
- public void getOutputPercent(){
-    System.out.println("RightMotor1" + m_RightMotor1.getMotorOutputPercent());
-    System.out.println("RightMotor2" + m_RightMotor2.getMotorOutputPercent());
-    System.out.println("RightMotor3" + m_RightMotor2.getMotorOutputPercent());
 
-    System.out.println("LeftMotor1" + m_LeftMotor1.getMotorOutputPercent());
-    System.out.println("LeftMotor2" + m_LeftMotor2.getMotorOutputPercent());
-    System.out.println("LeftMotor3" + m_LeftMotor3.getMotorOutputPercent());
-
-    
- }
   /**
    * Drives the robot using arcade controls.
    *
@@ -147,6 +138,6 @@ public class DriveSubsystem extends SubsystemBase {
    * @param maxOutput the maximum output to which the drive will be constrained
    */
   public void setMaxOutput(double maxOutput) {
-    m_drive.setMaxOutput(maxOutput);
+    m_drive.setMaxOutput(maxOutput * .8);
   }
 }

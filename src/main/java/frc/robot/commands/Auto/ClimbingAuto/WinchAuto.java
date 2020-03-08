@@ -5,24 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-
-package frc.robot.commands.Auto.IntakeAuto;
+package frc.robot.commands.Auto.ClimbingAuto;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Belt;
+import frc.robot.subsystems.Winch;
 
-public class BeltAuto extends CommandBase {
-  private final Belt m_Belt;
+public class WinchAuto extends CommandBase {
+  private final Winch m_Winch;
   double m_speed;
-
   /**
-   * Creates a new BeltOutAuto.
+   * Creates a new WinchAuto.
    */
-  public BeltAuto(Belt subsystem, double speed) {
-    m_Belt = subsystem;
+  public WinchAuto(Winch subsystem, double speed) {
+    m_Winch = subsystem;
     m_speed = speed;
 
-    addRequirements(m_Belt);
+    addRequirements(m_Winch);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -34,7 +32,7 @@ public class BeltAuto extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Belt.BeltAuto(m_speed);
+    m_Winch.WinchAuto(m_speed);
   }
 
   // Called once the command ends or is interrupted.
