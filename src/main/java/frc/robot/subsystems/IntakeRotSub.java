@@ -38,7 +38,6 @@ public class IntakeRotSub extends SubsystemBase {
   public void RotDown() {
     m_Rotate.set(ControlMode.PercentOutput, -1.0);
   }
-
   public void RotIdle() {
     m_Rotate.set(ControlMode.PercentOutput, 0);
 }
