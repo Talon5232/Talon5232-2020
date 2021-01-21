@@ -111,8 +111,11 @@ public class RobotContainer {
             () -> m_driverController.getZ()));
 
     // Add commands to the autonomous command chooser
+
     m_chooser.setDefaultOption("Shooter", m_FWDBack);
     m_chooser.addOption("BasicFWDBack", m_Basic);
+    
+
    // m_chooser.addOption("Complex Auto", m_complexAuto);
 
     // Put the chooser on the dashboard

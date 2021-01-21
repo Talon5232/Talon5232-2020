@@ -7,14 +7,13 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class PDP extends SubsystemBase {
+public class Limelight extends SubsystemBase {
   /**
-   * Creates a new PDP.
+   * Creates a new Limelight.
    */
-  public PDP() {
+  public Limelight() {
 
   }
 
